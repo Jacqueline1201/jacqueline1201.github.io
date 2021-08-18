@@ -1,0 +1,49 @@
+body{
+    margin:0;
+    font-family: 'Monserrat';
+    height: 100vh
+}
+
+section {
+    height:100vh;
+    text-align: center;
+}
+
+.box{
+    background: red;
+    width: 200px;
+    height: 200px;
+}
+
+.dark {
+    text-align: left;
+    background: rgb(78, 70, 70);
+    color: white;
+    position: relative;
+}
+
+img{
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    object-fit: cover;
+    right: 0 ;
+    top: 0;
+    z-index: 0;
+
+}
+
+.content {
+    padding: 9em 5em;
+    z-index: 1;
+    position: relative;
+    h2{
+        font-size: 5em;
+        margin-bottom: 0;
+    }
+
+    p{
+        font-size:1.6em;
+    }
+
+}
