@@ -33,6 +33,15 @@ img{
 
 }
 
+.heading {
+    padding: 9em 5em;
+    position: relative;
+    h1 { 
+        font-size: 5em;
+        color:rgb(78, 70, 70);
+    }
+}
+
 .content {
     padding: 9em 5em;
     z-index: 1;
