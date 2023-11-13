@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Monserrat';
+  font-family: 'Josefin Sans';
   height: 100vh;
+  align-items: center;
 }
 
 section {
@@ -22,7 +23,7 @@ section {
   position: relative;
 }
 
-img {
+.slide {
   width: 50%;
   height: 100vh;
   position: absolute;
@@ -47,6 +48,7 @@ img {
   padding: 9em 5em;
   z-index: 1;
   position: relative;
+  width: 40%;
 }
 
 .content h2 {
@@ -57,4 +59,11 @@ img {
 .content p {
   font-size: 1.6em;
 }
-/*# sourceMappingURL=main.css.map */
+
+.icon-container {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed for spacing */
+  max-width: 30vh;
+  align-items: center;
+  margin: 0 auto;
+}
