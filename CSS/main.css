@@ -31,6 +31,7 @@ section {
 .heading {
   padding: 9em 5em;
   position: relative;
+  align-items: center;
 }
 
 .heading h1 {
@@ -61,4 +62,18 @@ section {
   max-width: 30vh;
   align-items: center;
   margin: 0 auto;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+#canvas1{
+  background: transparent;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index:2;
+  position: absolute;
 }
