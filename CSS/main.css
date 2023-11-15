@@ -9,7 +9,12 @@ section {
   height: 100vh;
   text-align: center;
 }
-
+.light {
+  text-align: left;
+  background: white;
+  color: #4e4646;
+  position: relative;
+}
 .dark {
   text-align: left;
   background: #4e4646;
@@ -28,15 +33,25 @@ section {
   z-index: 0;
 }
 
-.heading {
-  padding: 9em 5em;
+.outer {
   position: relative;
-  align-items: center;
+}
+.heading {
+  position: absolute;
+  display: table-cell;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-80%);
+  z-index: 5;
 }
 
 .heading h1 {
   font-size: 5em;
   color: #4e4646;
+  text-align: center;
 }
 
 .content {
@@ -59,21 +74,9 @@ section {
 .icon-container {
   display: flex;
   justify-content: space-between; /* Adjust as needed for spacing */
-  max-width: 30vh;
+  max-width: 10vw;
   align-items: center;
   margin: 0 auto;
 }
 
 /*-------------------------------------------------------------------------------------*/
-
-#canvas1{
-  background: transparent;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index:2;
-  position: absolute;
-}

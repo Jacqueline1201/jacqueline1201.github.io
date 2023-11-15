@@ -1,58 +1,95 @@
-const canvas1 = document.getElementById('canvas1');
-const ctx = canvas1.getContext('2d');
-canvas1.width= window.innerWidth;
-canvas1.height=this.window.innerHeight;
-const particlesarray=[];
-window.addEventListener('resize',function () {
-    canvas1.width= window.innerWidth;
-    canvas1.height=this.window.innerHeight;
-})
-const mouse= {
-    x:null,
-    y:null
+var WIDTH, HEIGHT, canvas, con, g;
+var pxs = [];
+var rint = 70;
+$(document).ready(function() {
+    console.log("READY");
+    var windowSize = function() {
+        WIDTH = $('.dark').innerWidth();
+        HEIGHT = $('.dark').innerHeight();
+        canvas = $('#galaxy');
+        canvas.attr('width', WIDTH).attr('height', HEIGHT);
+    };
+
+    windowSize();
+  
+    $(window).resize(function() {
+        windowSize();
+    });
+
+    con = canvas[0].getContext('2d');
+    for (var i = 0; i < 100; i++) {
+        pxs[i] = new Circle();
+        pxs[i].reset();
+    }
+    requestAnimationFrame(draw);
+});
+
+function draw() {
+    con.clearRect(0, 0, WIDTH, HEIGHT);
+    con.globalCompositeOperation = "lighter";
+    for (var i = 0; i < pxs.length; i++) {
+        pxs[i].fade();
+        pxs[i].move();
+        pxs[i].draw();
+    }
+    requestAnimationFrame(draw);
 }
-canvas1.addEventListener('mousemove',function(event){
-    mouse.x=event.x;
-    mouse.y=event.y;
-    for(let i=0;i<5;i++){       //change i<5 to any number to inc or dec the sparkles !!DO NOT SET THE NUMBER TOO HIGH IT WILL HANG THE BROWSER
-        particlesarray.push(new particles());
-    }
-})
-class particles{
-    constructor(){
-        this.x=mouse.x;
-        this.y=mouse.y;
-        this.size = Math.random()*5+1;
-        this.speedx=Math.random()*3-1.5;
-        this.speedy=Math.random()*3-1.5;
-    }
-    update(){
-        this.x+=this.speedx;
-        this.y+=this.speedy;
-        if(this.size>0){
-            this.size-=0.1;
-        }
-    }
-    draw(){
-        ctx.fillStyle='#F8C7CC';
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,6);
-        ctx.fill();
-    }
+
+function Circle() {
+    this.s = {
+        ttl: 15000,
+        xmax: 5,
+        ymax: 2,
+        rmax: 17,
+        rt: 1,
+        xdef: 960,
+        ydef: 540,
+        xdrift: 2,
+        ydrift: 2,
+        random: true,
+        blink: true
+    };
+    this.reset = function() {
+        this.x = (this.s.random ? WIDTH * Math.random() : this.s.xdef);
+        this.y = (this.s.random ? HEIGHT * Math.random() : this.s.ydef);
+        this.r = ((this.s.rmax - 1) * Math.random()) + 1;
+        this.dx = (Math.random() * this.s.xmax) * (Math.random() < 0.5 ? -1 : 1);
+        this.dy = (Math.random() * this.s.ymax) * (Math.random() < 0.5 ? -1 : 1);
+        this.hl = (this.s.ttl / rint) * (this.r / this.s.rmax);
+        this.rt = Math.random() * this.hl;
+        this.s.rt = Math.random() + 1;
+        this.stop = Math.random() * 0.2 + 0.4;
+        this.s.xdrift *= Math.random() * (Math.random() < 0.5 ? -1 : 1);
+        this.s.ydrift *= Math.random() * (Math.random() < 0.5 ? -1 : 1);
+    };
+    this.fade = function() {
+        this.rt += this.s.rt;
+    };
+    this.draw = function() {
+        if (this.s.blink && (this.rt <= 0 || this.rt >= this.hl)) this.s.rt = this.s.rt * -1;
+        else if (this.rt >= this.hl) this.reset();
+        var newo = 1 - (this.rt / this.hl);
+        con.beginPath();
+        con.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+        con.closePath();
+        var cr = this.r * newo;
+        g = con.createRadialGradient(this.x, this.y, 0, this.x, this.y, (cr <= 0 ? 1 : cr));
+        g.addColorStop(0.0, 'rgba(248,199,204,' + newo + ')');
+        g.addColorStop(this.stop, 'rgba(248,199,204,' + (newo * 0.2) + ')');
+        g.addColorStop(1.0, 'rgba(248,199,204,0)');
+        con.fillStyle = g;
+        con.fill();
+    };
+    this.move = function() {
+        this.x += (this.rt / this.hl) * this.dx;
+        this.y += (this.rt / this.hl) * this.dy;
+        if (this.x > WIDTH || this.x < 0) this.dx *= -1;
+        if (this.y > HEIGHT || this.y < 0) this.dy *= -1;
+    };
+    this.getX = function() {
+        return this.x;
+    };
+    this.getY = function() {
+        return this.y;
+    };
 };
-function handleparticles(){
-    for(let i=0;i<particlesarray.length;i++){
-        particlesarray[i].update();
-        particlesarray[i].draw();
-        if(particlesarray[i].size<=0.1){
-            particlesarray.splice(i,1);
-            --i;
-        }
-    }
-}
-function animate(){
-    ctx.clearRect(0,0,canvas1.width,canvas1.height);
-    handleparticles();
-    requestAnimationFrame(animate);
-}
-animate();
