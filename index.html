@@ -7,10 +7,14 @@
     <title>Jacqueline Thai</title>
     <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
     <link rel = "stylesheet" href="CSS/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
 </head>
 <body>
-
+    
     <section class = "light">
+        
         <div class = "heading">
             <h1>Jacqueline Thai</h1>
             <div class="icon-container">
@@ -20,14 +24,11 @@
                 <a href="https://www.linkedin.com/in/jthai-1201/" target="_blank">
                     <img class="color-svg" src="images/LinkedIn.svg" alt="LinkedIn Icon">
                 </a>
-                <img class="color-svg" src="images/Mail.svg" alt="Mail Icon">
             </div>
-            
         </div>
+        <canvas id="galaxy" width="100%" height="100%"></canvas>
         
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
     <section class = "dark">
         <div class = "content">
             <h2>About Me</h2>
@@ -37,11 +38,10 @@
             <p>
                 On my free time, I like to make music and play the piano. I also enjoy walking my dog on a sunny day, and planting new types of flora in my aquarium. My dog's name is Cookie and he is an 8 year old shih tzu!
             </p>
+            <canvas id="canvas1" width="document.body.scrollHeight" height="height"></canvas>
         </div>
         <img class="slide" src ="images/FestiveCookie.jpg" alt="A dog wearing a santa hat."> 
     </section>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script> -->
     <script>
         let t1 = gsap.timeline({
             scrollTrigger: {
@@ -51,19 +51,17 @@
 
             }
         });
-
-        // let t1reverse = gsap.timeline({
-        //     scrollTrigger: {
-        //         trigger:'.dark',
-        //         start: "center bottom",
-                
-
-        //     }
-        // });
         t1.from(".slide", {x:200, opacity: 0, duration: 1.5})
             .from(".content", {y: 300, opacity: 0, duration: 1}, "-=1")
-        // t1reverse.from("img", {x:0, opacity: 0, duration: 1.5})
-        //     .from(".content", {y: 0, opacity: 0, duration: 1}, "-=1")
     </script>
+    <section class="light">
+        <div class="heading">
+            <p>
+                Under Construction!<br>
+                Sorry there's not much here
+            </p>
+        </div>
+    </section>
+    <script src="Components/sparkles.js"></script>
 </body>
 </html>
