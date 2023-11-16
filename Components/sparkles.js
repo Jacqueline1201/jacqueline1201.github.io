@@ -40,25 +40,25 @@ function Circle() {
     this.s = {
         ttl: 15000,
         xmax: 2,
-        ymin: 2,
-        ymax: 0, // descent speed
+        ymin: 0.9,
+        ymax: 2, // descent speed
         rmax: 30, // size
         rt: 1,
         xdef: WIDTH/2,
         ydef: 1,
         xrandom: true,
         yrandom: false,
-        blink: false
+        blink: true
     };
     this.reset = function() {
         this.x = (this.s.xrandom ? WIDTH * Math.random() : this.s.xdef);
         this.y = (this.s.yrandom ? HEIGHT * Math.random() : this.s.ydef);
-        this.r = ((this.s.rmax - 1) * Math.random()) + 1;
+        this.r = ((this.s.rmax - 1) * Math.random()) + 10;
         this.dx = (Math.random() * this.s.xmax) * (Math.random() < 0.5 ? -1 : 1);
-        this.dy = (3) * (Math.random() < 0.5 ? -1 : -1);
+        this.dy = Math.max(this.s.ymin, (Math.random() * this.s.ymax)) * (Math.random() < 0.5 ? -1 : -1);
         this.hl = (this.s.ttl / rint) * (this.r / this.s.rmax);
         this.rt = Math.random() * this.hl;
-        this.s.rt = Math.random() + 1;
+        this.s.rt = Math.random()+1;
         this.stop = Math.random() * 0.2 + 0.4;
     };
     this.fade = function() {
@@ -81,9 +81,10 @@ function Circle() {
     };
     this.move = function() {
         this.x += (this.rt / this.hl) * this.dx;
-        this.y -= Math.max(0.2, (this.rt / this.hl))* this.dy;
+        console.log(this.rt / this.hl);
+        this.y -= Math.max(1, (this.rt / this.hl)) * this.dy;
+        // if (true) this.dx *= -1;
         if (this.x > WIDTH || this.x < 0) this.dx *= -1;
-        // if (this.x > WIDTH || this.x < 0) this.dx *= -1;
         // if (this.y > HEIGHT || this.y < 0) this.dy *= -1;
         if (this.y > HEIGHT || this.y < 0) this.reset();
         // if (this.y > HEIGHT) this.dy *= this.reset();
