@@ -82,7 +82,7 @@ function Circle() {
     this.move = function() {
         this.x += (this.rt / this.hl) * this.dx;
         console.log(this.rt / this.hl);
-        this.y -= Math.max(1, (this.rt / this.hl)) * this.dy;
+        this.y -= Math.max(0.6, (this.rt / this.hl)) * this.dy;
         // if (true) this.dx *= -1;
         if (this.x > WIDTH || this.x < 0) this.dx *= -1;
         // if (this.y > HEIGHT || this.y < 0) this.dy *= -1;
