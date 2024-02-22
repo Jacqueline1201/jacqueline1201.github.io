@@ -1,0 +1,147 @@
+body {
+    height: 100vh;
+    margin:0;
+    z-index: -30;
+    background-color: #fee6e3;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.text-container h1{
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4646;
+}
+
+
+.text-container p {
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #4e4646;
+    padding-bottom: 1em;
+}
+
+.score-container {
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  color: #4e4646;
+  padding: 1em;
+}
+
+.quiz-container {
+  height: 60%;
+  width: 60%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -10;
+}
+
+.question-container {
+  padding: 1em;
+}
+
+.question {
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3em;
+  color: #4e4646;
+}
+
+.options-container {
+  flex-grow: 1;
+  display: flex;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6em;
+  color: #4e4646;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  height: inherit;
+}
+
+.button-container {
+    display: flex;
+    padding-bottom: 5em;
+    gap: 20%;
+}
+
+.quiz-container, input[type=radio]
+{
+  z-index:0;
+}
+
+/* Button */
+.button-56 {
+    margin: 0 auto;
+    align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: inline;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-56:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+  }
+  
+  .button-56:hover:after {
+    transform: translate(0, 0);
+  }
+  
+  .button-56:active {
+    background-color: #ffdeda;
+    outline: 0;
+  }
+  
+  .button-56:hover {
+    outline: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .button-56 {
+      padding: 0 40px;
+    }
+  }

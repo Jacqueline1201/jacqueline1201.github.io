@@ -13,41 +13,59 @@
     <script src="Components/sparkles.js"></script>
 </head>
 <body>
-    <section class = "light">
-        <div class = "heading">
-            <h1>Jacqueline Thai</h1>
-            <div class="icon-container">
-                <a href="https://github.com/jacqueline1201" target="_blank">
-                    <img class="color-svg" src="images/Github.svg" alt="Github Icon">
-                </a>
-                <a href="https://www.linkedin.com/in/jthai-1201/" target="_blank">
-                    <img class="color-svg" src="images/LinkedIn.svg" alt="LinkedIn Icon">
+    <div class = "parent">
+        <section class = "light">
+            <div class = "heading">
+                <h1>Jacqueline Thai</h1>
+                <div class="icon-container">
+                    <a href="https://github.com/jacqueline1201" target="_blank">
+                        <img class="color-svg" src="images/Github.svg" alt="Github Icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/jthai-1201/" target="_blank">
+                        <img class="color-svg" src="images/LinkedIn.svg" alt="LinkedIn Icon">
+                    </a>
+                </div>
+            </div>
+            <canvas id="galaxy" width="100%" height="100%"></canvas>
+        </section>
+        <section class = "dark">
+            <div class = "content">
+                <h2>About Me</h2>
+                <p>
+                    Hi everyone! I graduated the University of California, Irvine, with a degree in Computer Science specialized in Intelligent Systems in 2023. Currently, I am working as a software engineer. 
+                </p>
+                <p>
+                    On my free time, I like to make music and play the piano. I also enjoy walking my dog on a sunny day, and planting new types of flora in my aquarium. My dog's name is Cookie and he is an 8 year old shih tzu!
+                </p>
+                <canvas id="canvas1" width="document.body.scrollHeight" height="height"></canvas>
+            </div>
+            <img class="slide" src ="images/FestiveCookie.jpg" alt="A dog wearing a santa hat."> 
+        </section>
+        <section class="light">
+            <div class="heading">
+                <p style="font-size:1.6em; font-family: Arial, Helvetica, sans-serif;">
+                Under Construction!<br>
+                Sorry there's not much here
+                </p>
+            </div>
+        </section>
+        <section class="dark">
+            <div class="heading">
+                <p style="font-size:2em; font-family: Arial, Helvetica, sans-serif;">
+                If you've scrolled this far and your bday happens to be today
+                <br>
+                I have a little something for you...
+                </p>
+                <a href="moomoo.html"> 
+                    <button class="button-56" role="button">
+                        Click Here!
+                    </button>
                 </a>
             </div>
-        </div>
-        <canvas id="galaxy" width="100%" height="100%"></canvas>
-    </section>
-    <section class = "dark">
-        <div class = "content">
-            <h2>About Me</h2>
-            <p>
-                Hi everyone! I graduated the University of California, Irvine, with a degree in Computer Science specialized in Intelligent Systems in 2023. Currently, I am working as a software engineer. 
-            </p>
-            <p>
-                On my free time, I like to make music and play the piano. I also enjoy walking my dog on a sunny day, and planting new types of flora in my aquarium. My dog's name is Cookie and he is an 8 year old shih tzu!
-            </p>
-            <canvas id="canvas1" width="document.body.scrollHeight" height="height"></canvas>
-        </div>
-        <img class="slide" src ="images/FestiveCookie.jpg" alt="A dog wearing a santa hat."> 
-    </section>
-    <section class="light">
-        <div class="heading">
-            <p style="font-size:1.6em; font-family: Arial, Helvetica, sans-serif;">
-            Under Construction!<br>
-            Sorry there's not much here
-            </p>
-        </div>
-    </section>
+    
+            
+        </section>
+    </div>
     <script>
         let t1 = gsap.timeline({
             scrollTrigger: {
