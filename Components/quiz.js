@@ -4,16 +4,6 @@ let Questions = [
         "incorrect_answers":
             ["boba shop","anime expo","LCS"]
     },
-    {"question":"What is Jackie's favorite league champion?",
-        "correct_answer":"sona",
-        "incorrect_answers":
-            ["yuumi","aphelios","ahri"]
-    },
-    {"question":"What did myork buy first item in the promotion game to master?",
-        "correct_answer":"Moonstone Renewer",
-        "incorrect_answers":
-            ["Shurelya's","Ardent Censor","Archangel's Staff"]
-    },
     {"question":"Where was the second time we met?",
         "correct_answer":"anime expo",
         "incorrect_answers":
@@ -23,6 +13,16 @@ let Questions = [
         "correct_answer":"3",
         "incorrect_answers":
             ["1","2","4"]
+    },
+    {"question":"What is Jackie's favorite league champion?",
+        "correct_answer":"sona",
+        "incorrect_answers":
+            ["yuumi","aphelios","ahri"]
+    },
+    {"question":"What did myork buy first item in the promotion game to master?",
+        "correct_answer":"Moonstone Renewer",
+        "incorrect_answers":
+            ["Shurelya's","Ardent Censor","Archangel's Staff"]
     }
 ];
 const ques = document.getElementById("ques")
@@ -107,12 +107,18 @@ function loadScore() {
 	const totalScore = document.getElementById("score");
 	totalScore.textContent = `You scored ${score} out 
 	of ${Questions.length}`;
-	totalScore.innerHTML += "<h3>All Answers</h3>"
+    totalScore.innerHTML += "<h2>Great Job!!!</h2>";
+	totalScore.innerHTML += "<h3>Here's all the answers if you happened to miss any:</h3>";
 	Questions.forEach((el, index) => {
 		totalScore.innerHTML += `<p>${index + 1}.
 		${el.correct_answer}</p>`
-	})
-    totalScore.innerHTML += "<h2>Now time for your gift!</h2>"
+	});
+    totalScore.innerHTML += "<h2>Now time for your gift!</h2>";
+    totalScore.innerHTML += "<a href=\"index.html\"> \
+        <button class=\"button-56\" role=\"button\">\
+            Main Page\
+        </button>\
+        </a>";
 }
 
 
