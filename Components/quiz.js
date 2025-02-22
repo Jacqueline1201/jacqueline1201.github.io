@@ -4,6 +4,7 @@ let Questions = [
         "incorrect_answers":
             ["boba shop","anime expo","LCS"]
     },
+
     {"question":"Where was the second time we met?",
         "correct_answer":"anime expo",
         "incorrect_answers":
@@ -14,6 +15,7 @@ let Questions = [
         "incorrect_answers":
             ["1","2","4"]
     },
+
     {"question":"What is Jackie's favorite league champion?",
         "correct_answer":"sona",
         "incorrect_answers":
