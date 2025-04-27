@@ -42,7 +42,7 @@ function Circle() {
         xmax: 2,
         ymin: 0.9,
         ymax: 2, // descent speed
-        rmax: 30, // size
+        rmax: 20, // size
         rt: 1,
         xdef: WIDTH/2,
         ydef: 1,
@@ -53,7 +53,7 @@ function Circle() {
     this.reset = function() {
         this.x = (this.s.xrandom ? WIDTH * Math.random() : this.s.xdef);
         this.y = (this.s.yrandom ? HEIGHT * Math.random() : this.s.ydef);
-        this.r = ((this.s.rmax - 1) * Math.random()) + 10;
+        this.r = ((this.s.rmax - 1) * Math.random()) + 25;
         this.dx = (Math.random() * this.s.xmax) * (Math.random() < 0.5 ? -1 : 1);
         this.dy = Math.max(this.s.ymin, (Math.random() * this.s.ymax)) * (Math.random() < 0.5 ? -1 : -1);
         this.hl = (this.s.ttl / rint) * (this.r / this.s.rmax);
