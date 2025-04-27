@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
     con = canvas[0].getContext('2d');
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 30; i++) {
         pxs[i] = new Circle();
         pxs[i].reset();
         pxs[i].setY(Math.random()*HEIGHT);
@@ -66,25 +66,48 @@ function Circle() {
     };
     this.draw = function() {
         if (this.s.blink && (this.rt <= 0 || this.rt >= this.hl)) this.s.rt = this.s.rt*-1; // blinks
-        // else if (this.rt >= this.hl) this.reset(); //reset
-        var newo = 1 - (this.rt / this.hl);
+        else if (this.rt >= this.hl) this.reset(); //reset
+
+        var newo =(this.rt / this.hl);
+
+        // Begin drawing path for the petal
         con.beginPath();
-        con.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
-        con.closePath();
-        var cr = this.r * newo;
-        g = con.createRadialGradient(this.x, this.y, 0, this.x, this.y, (cr <= 0 ? 1 : cr));
-        g.addColorStop(0.0, 'rgba(248,199,204,' + newo + ')');
-        g.addColorStop(this.stop, 'rgba(248,199,204,' + (newo * 0.2) + ')');
-        g.addColorStop(1.0, 'rgba(248,199,204,0)');
+
+        // Move to the center of the petal (starting point)
+        con.moveTo(this.x, this.y);
+
+        // Left lobe of the heart (rotated, half size)
+        con.bezierCurveTo(
+            this.x + this.r/2, this.y - newo*this.r/2,   // First control point
+            this.x - this.r/2, this.y - newo*this.r/2,   // Second control point
+            this.x - this.r,   this.y               // End point
+        );
+
+        // Right lobe of the heart (rotated, half size)
+        con.bezierCurveTo(
+            this.x - this.r/2, this.y + newo*this.r/2,   // First control point
+            this.x + this.r/2, this.y + newo*this.r/2,   // Second control point
+            this.x,          this.y                // End point (back to center)
+        );
+
+        con.closePath();  // Complete the path of the petal
+
+        var cr = this.r;  // Keep radius fixed
+        g = con.createRadialGradient(this.x, this.y, 0, this.x, this.y, cr); // Static gradient, no animation
+        g.addColorStop(0.0, 'rgba(248,199,204,0.5)');   // Opaque color at the center
+        // g.addColorStop(0.8, 'rgba(248,199,204,0.8)'); // Semi-transparent color at the edges
+        g.addColorStop(1.0, 'rgba(248,199,204,1)');   // Fully transparent at the outer edges
+    
         con.fillStyle = g;
         con.fill();
     };
     this.move = function() {
         this.x += (this.rt / this.hl) * this.dx;
-        console.log(this.rt / this.hl);
+        // console.log(this.rt / this.hl);
         this.y -= Math.max(0.6, (this.rt / this.hl)) * this.dy;
-        // if (true) this.dx *= -1;
+        // bounce off the walls
         if (this.x > WIDTH || this.x < 0) this.dx *= -1;
+
         // if (this.y > HEIGHT || this.y < 0) this.dy *= -1;
         if (this.y > HEIGHT || this.y < 0) this.reset();
         // if (this.y > HEIGHT) this.dy *= this.reset();
